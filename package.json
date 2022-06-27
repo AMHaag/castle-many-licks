@@ -1,0 +1,28 @@
+{
+  "name": "castle-many-licks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "kill": "npx kill-port 3001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMHaag/castle-many-licks.git"
+  },
+  "keywords": [],
+  "author": "Aaron Haag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AMHaag/castle-many-licks/issues"
+  },
+  "homepage": "https://github.com/AMHaag/castle-many-licks#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.1"
+  }
+}
