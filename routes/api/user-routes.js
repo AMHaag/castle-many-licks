@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// Get api/users
+// get all users
 router.get('/', (req, res) => {
-  User.findAll({ attributes: { exclude: ['password'] } })
+  User.findAll({
+    attributes: { exclude: ['password'] },
+  })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
       console.log(err);
@@ -11,7 +13,6 @@ router.get('/', (req, res) => {
     });
 });
 
-//Get api/users/1
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -32,7 +33,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Post api/users
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -47,12 +47,17 @@ router.post('/', (req, res) => {
     });
 });
 
-//Put api/users/1
+router.post('/login',(req,res)=>{
+    //Query operation
+})
+
+
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
-  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
+  // pass in req.body instead to only update what's passed through
   User.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id,
     },
@@ -70,7 +75,6 @@ router.put('/:id', (req, res) => {
     });
 });
 
-//Delete api/users/1
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
